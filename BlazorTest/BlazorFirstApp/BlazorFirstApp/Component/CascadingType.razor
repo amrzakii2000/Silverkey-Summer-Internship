@@ -1,0 +1,18 @@
+﻿<h6>Cascading by Type</h6>
+
+<ul>
+    <li>Name: @CascadedName</li>
+    <li>Age: @CascadedAge</li>
+    <li>Team: @CascadedTeam</li>
+</ul>
+
+@code {
+    [CascadingParameter]
+    private string CascadedName { get; set; }
+
+    [CascadingParameter]
+    private string CascadedTeam { get; set; }
+
+    [CascadingParameter]
+    private int CascadedAge { get; set; }
+}

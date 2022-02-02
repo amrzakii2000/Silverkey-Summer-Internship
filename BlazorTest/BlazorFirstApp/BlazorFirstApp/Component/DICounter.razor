@@ -1,0 +1,14 @@
+﻿@using BlazorFirstapp.Services
+
+@inject ICounterService CounterService 
+
+@page "/dependencyinjection"
+
+<h3>DICounter</h3>
+
+<p>Current Count: @CounterService.CurrentCount</p>
+<button class="btn btn-danger" @onclick="CounterService.IncrementCount">Click me</button>
+
+@code {
+
+}

@@ -1,0 +1,37 @@
+{
+    "size": {
+        "small": 5,
+        "medium": 10,
+        "large": 15,
+        "mega": 25
+    },
+    "cheese": {
+        "mozzarella": 10,
+        "cheddar": 5,
+        "parmesan": 15,
+        "gruyere": 20
+    },
+    "vegetables": {
+        "tomato": 3,
+        "onion": 4,
+        "mushroom": 10,
+        "spinach": 6,
+        "olive": 4,
+        "garlic": 3,
+        "pepper": 5
+    },
+    "meats": {
+        "chicken": 15,
+        "pepperoni": 10,
+        "sausage": 10,
+        "meatballs": 15,
+        "fish": 20,
+        "shrimp": 30
+    },
+    "sauces": {
+        "BBQ": 5,
+        "Ranch": 5,
+        "Chili": 8,
+        "Mustard": 3
+    }
+}

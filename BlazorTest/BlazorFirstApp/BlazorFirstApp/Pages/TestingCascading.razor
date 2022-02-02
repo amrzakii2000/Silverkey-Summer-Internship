@@ -1,0 +1,31 @@
+﻿@page "/cascading"
+
+<h3>TestingCascading</h3>
+<input @bind-value=Name type="text" placeholder="Enter your Name" @bind-value:event="oninput" />
+<input @bind-value=Age type="number" placeholder="Enter your Age" />
+<input @bind-value=Team type="text" placeholder="Enter your Team" @bind-value:event="oninput" />
+
+
+<CascadingValue Name="Name" Value="@Name">
+    <CascadingValue Name="Age" Value="@Age">
+        <CascadingValue Name="Team" Value="@Team">
+            <CascadingName></CascadingName>
+        </CascadingValue>
+    </CascadingValue>
+</CascadingValue>
+
+<CascadingValue Value="@Name">
+    <CascadingValue Value="@Age">
+        <CascadingValue Value="@Team">      <!--This will override the cascaded type property with value Name-->
+            <CascadingType></CascadingType>
+        </CascadingValue>
+    </CascadingValue>
+</CascadingValue>
+
+
+
+@code {
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string Team { get; set; }
+}

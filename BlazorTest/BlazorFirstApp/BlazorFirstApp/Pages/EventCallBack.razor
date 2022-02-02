@@ -1,0 +1,24 @@
+﻿@page "/eventcallback"
+
+<h3>EventCallBack</h3>
+
+<p>Last multiple of 3 = @LastMultipleofThree</p>
+<p>Last multiple of 5 = @LastMultipleofFive</p>
+
+<Counter OnMultipleOfFive=@SaveLastMultipleofFive OnMultipleOfThree=@SaveLastMultipleOfThree/>
+
+@code {
+    public int LastMultipleofFive { get; set; }
+    public int LastMultipleofThree { get; set; }
+
+    private void SaveLastMultipleofFive(int val)
+    {
+        LastMultipleofFive = val;       //StateHasChanged() will be automatically called
+    }
+
+    private void SaveLastMultipleOfThree(int val)
+    {
+        LastMultipleofThree = val;
+        //StateHasChanged();      //Uncomment for re-rendering
+    }
+}

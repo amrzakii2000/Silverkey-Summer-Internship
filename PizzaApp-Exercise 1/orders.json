@@ -1,0 +1,19 @@
+{
+  "08079c58-87b1-4341-a8cb-a63c8d321684": {
+    "Id": "08079c58-87b1-4341-a8cb-a63c8d321684",
+    "NumberofPizzas": 1,
+    "TotalPrice": 65,
+    "Pizzas": [
+      {
+        "Size": "large",
+        "Price": 65,
+        "Ingredients": [
+          "mozzarella",
+          "cheddar",
+          "parmesan",
+          "gruyere"
+        ]
+      }
+    ]
+  }
+}

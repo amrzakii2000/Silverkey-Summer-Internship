@@ -1,0 +1,14 @@
+﻿@inject IJSRuntime JSRuntime
+
+@code {
+    [Parameter]
+    public Func<ElementReference> inputRef { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (inputRef is null)
+            throw new ArgumentNullException();
+        if (firstRender)
+            await JSRuntime.InvokeVoidAsync("setFocus", inputRef());
+    }
+}

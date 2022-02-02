@@ -1,0 +1,57 @@
+﻿@page "/form"
+
+<h3>Form</h3>
+
+<EditForm Model="person" Context="CurrentContext">
+    <DataAnnotationsValidator />
+    <ValidationSummary></ValidationSummary>
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <div class="input-group @CurrentContext.FieldCssClass(()=> person.Email)">
+            <div class="input-group-prepend">
+                <span class="oi oi-person input-group-text"></span>
+            </div>
+            <InputText @bind-Value=person.Name class="form-control" />
+        </div>
+        <ValidationMessage For="@(() => person.Name)"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">@@</span>
+            </div>
+            <InputText @bind-Value=person.Email class="form-control" />
+        </div>
+        <ValidationMessage For="@(() => person.Email)"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label for="Age">Age</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="oi oi-battery-full input-group-text"></span>
+            </div>
+            <InputNumber @bind-Value=person.Age class="form-control" />
+        </div>
+        <ValidationMessage For="@(() => person.Age)"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label for="Gender">Gender</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="oi oi-people input-group-text"></span>
+            </div>
+            <InputSelect @bind-Value="person.Gender" class="form-control">
+                <option>Male</option>
+                <option>Female</option>
+            </InputSelect>
+        </div>
+        <ValidationMessage For="@(() => person.Gender)"></ValidationMessage>
+    </div>
+    <input type="submit" class="btn btn-success" value="Save" />
+</EditForm>
+
+@code {
+
+    Person person = new Person();
+}

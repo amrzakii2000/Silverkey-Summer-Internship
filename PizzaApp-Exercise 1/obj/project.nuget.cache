@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "07cr+5EScBc/hbqmyekEQrceGHDg+9+ssIm5R3/NTa37XGc0LjVSmHEkyV4/9NPPme1VmjMgz5DZbOsHkSEfbw==",
+  "success": true,
+  "projectFilePath": "G:\\summer-internships\\PizzaApp-Exercise 1\\PizzaApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Amr\\.nuget\\packages\\sixlabors.imagesharp\\1.0.2\\sixlabors.imagesharp.1.0.2.nupkg.sha512",
+    "C:\\Users\\Amr\\.nuget\\packages\\spectre.console\\0.41.0\\spectre.console.0.41.0.nupkg.sha512",
+    "C:\\Users\\Amr\\.nuget\\packages\\spectre.console.imagesharp\\0.41.0\\spectre.console.imagesharp.0.41.0.nupkg.sha512",
+    "C:\\Users\\Amr\\.nuget\\packages\\wcwidth\\0.2.0\\wcwidth.0.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,124 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">BlazorFirstApp</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="oi oi-plus" aria-hidden="true"></span>Increment Counter
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="fetchdata">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="decrementcounter">
+                <span class="oi oi-compass" aria-hidden="true"></span> Decrement Counter
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="events">
+                <span class="oi oi-arrow-circle-right" aria-hidden="true"></span> Events Propagation
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="eventcallback">
+                <span class="oi oi-loop-circular" aria-hidden="true"></span> Events CallBack
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="twowaybinding">
+                <span class="oi oi-loop" aria-hidden="true"></span> Two-way Binding
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="bind-directives">
+                <span class="oi oi-arrow-circle-bottom" aria-hidden="true"></span> Binding Directives
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="cascading">
+                <span class="oi oi-transfer" aria-hidden="true"></span> Cascading
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="code-attributes">
+                <span class="oi oi-fork" aria-hidden="true"></span> Code attributes
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="treerender">
+                <span class="oi oi-resize-height" aria-hidden="true"></span> Tree Rendering
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="renderfrag">
+                <span class="oi oi-folder" aria-hidden="true"></span> Render Fragments
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/customer" Match="@NavLinkMatch.Prefix">
+                <span class="oi oi-circle-x" aria-hidden="true"></span> Routing Parameters
+            </NavLink>
+            <ul class="nav flex-column">
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="customer/Google" Match="@NavLinkMatch.Prefix">
+                        <span class="oi oi-circle-x" aria-hidden="true"></span> Routing/Google
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="customer/Netflix" Match="@NavLinkMatch.Prefix">
+                        <span class="oi oi-circle-x" aria-hidden="true"></span> Routing/Netflix
+                    </NavLink>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="form">
+                <span class="oi oi-file" aria-hidden="true"></span> Form Submission
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="classlibrary">
+                <span class="oi oi-sort-descending" aria-hidden="true"></span> Component Library Test
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="tabtest">
+                <span class="oi oi-document" aria-hidden="true"></span> Tab Pages
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="calljs">
+                <span class="oi oi-code" aria-hidden="true"></span> JavaScript Interop
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="dependencyinjection">
+                <span class="oi oi-musical-note" aria-hidden="true"></span> Dependency Injection
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

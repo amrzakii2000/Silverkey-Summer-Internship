@@ -1,0 +1,29 @@
+﻿@page "/treerender"
+
+<h3>TreeRendering</h3>
+
+<ol>
+    @foreach (Person person in footballers)
+    {
+        <li>
+            @person
+        </li>
+    }
+</ol>
+
+<button class="btn btn-success" @onclick="@UpdateList">Update Markup</button>
+
+@code {
+    List<Person> footballers = new List<Person>() {
+        new Person("Amr Zaki", 20, "Male", null),
+        new Person("Lionel Messi", 34, "Male", null),
+        new Person("Cristiano Ronaldo", 36, "Male", null)
+    };
+
+    private void UpdateList()
+    {
+        var footballer = footballers[0];
+        footballers.RemoveAt(0);
+        footballers.Add(footballer);
+    }
+}

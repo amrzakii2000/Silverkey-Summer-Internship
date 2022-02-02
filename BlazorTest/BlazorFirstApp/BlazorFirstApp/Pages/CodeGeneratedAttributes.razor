@@ -1,0 +1,14 @@
+﻿@page "/code-attributes"
+
+<h3>CodeGeneratedAttributes</h3>
+<input @attributes="@Attributes" />
+@code {
+
+    Dictionary<string, object> Attributes = new Dictionary<string, object>()
+    {
+        {"type", "text" },
+        {"value", "Amr" },
+        {"readonly", true}
+    };
+
+}

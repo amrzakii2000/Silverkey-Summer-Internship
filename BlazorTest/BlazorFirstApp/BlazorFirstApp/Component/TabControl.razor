@@ -1,0 +1,45 @@
+﻿<h5>This is TabControl Page</h5>
+
+<CascadingValue Value="this">
+    <div class="btn-group" role="group">
+        @foreach (TabPage tabPage in Pages)
+        {
+            <button type="button" class="btn @GetButtonClass(tabPage)" @onclick="@(()=>ActivePage=tabPage)">
+                @if (GenericFragment != null)
+                {
+                    @GenericFragment(tabPage)
+                }
+                else
+                {
+                    @tabPage.TabTitle
+                }
+            </button>
+        }
+    </div>
+    @ChildContent
+</CascadingValue>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public RenderFragment<TabPage> GenericFragment { get; set; }
+
+    public TabPage ActivePage { get; set; }
+
+    List<TabPage> Pages = new List<TabPage>();
+
+    public void AddPage(TabPage Page)
+    {
+        Pages.Add(Page);
+        if (Pages.Count == 1)
+            ActivePage = Page;
+        StateHasChanged();
+    }
+
+    string GetButtonClass(TabPage page)
+    {
+        return page == ActivePage ? "btn-primary" : "btn-secondary";
+    }
+}

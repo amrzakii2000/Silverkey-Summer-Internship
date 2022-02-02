@@ -1,0 +1,10 @@
+﻿@page "/bind-directives"
+
+<h3>BindingDirectives</h3>
+
+<label style="display:block">My name is @Name</label>
+<input @bind-value=Name @bind-value:event="oninput"/>
+
+@code {
+    public string Name { get; set; } = string.Empty;
+}

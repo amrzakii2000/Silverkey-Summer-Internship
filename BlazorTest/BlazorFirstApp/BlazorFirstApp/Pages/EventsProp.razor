@@ -1,0 +1,35 @@
+﻿@page "/events"
+<h3>EventsProp</h3>
+
+<div class="btn btn-danger" @onclick="@IncrementCount1">
+    <h6>Click 1</h6>
+    <div class="btn btn-success" @onclick="@IncrementCount2" @onclick:stopPropagation>
+        <h6>Click 2</h6>
+        <div class="btn btn-primary" @onclick="@IncrementCount3" @onclick:stopPropagation>
+            <h6>Click 3</h6>
+        </div>
+    </div>
+</div>
+<p>Count 1= @count1</p>
+<p>Count 2= @count2</p>
+<p>Count 3= @count3</p>
+
+
+@code {
+    private int count1 = 0, count2 = 0, count3 = 0;
+
+    private void IncrementCount1()
+    {
+        count1++;
+    }
+
+    private void IncrementCount2()
+    {
+        count2++;
+    }
+
+    private void IncrementCount3()
+    {
+        count3++;
+    }
+}

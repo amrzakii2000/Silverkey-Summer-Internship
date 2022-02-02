@@ -1,0 +1,107 @@
+﻿@page "/calljs"
+@inject IJSRuntime JSRuntime
+@implements IDisposable
+
+<div class="card m-5">
+    <div class="card-body">
+        <h4 class="card-title">Calling JS Functions from .NET</h4>
+        <div class="btn-group" role="group">
+            <button class="btn btn-danger" @onclick="AlertJS">Alert JS from Blazor</button>
+            <button class="btn btn-primary" @onclick="HelloPerson">Say Hello</button>
+            <button class="btn btn-secondary" @onclick="LogPerson">Log Person</button>
+            <button class="btn btn-warning" @onclick="AskforName">Enter your Name</button>
+            <button class="btn btn-info" @onclick="ConfirmMessage">Confirm</button>
+            <button class="btn btn-dark" @onclick="ChangeTitle">Change document title</button>
+        </div>
+    </div>
+</div>
+
+<div class="card m-5">
+    <div class="card-body">
+        <h4 class="card-title">AutoFocus</h4>
+        <input @ref="reference" type="text" />
+        <AutoFocus inputRef="() =>reference" />
+    </div>
+</div>
+
+<div class="card m-5">
+    <div class="card-body">
+        <h4 class="card-title">Calling .NET functions from JavaScript</h4>
+        <button class="btn btn-success" @onclick="LoadText">Say Hello from .NET</button>
+    </div>
+    <ul>
+        @foreach (var text in RandomText)
+        {
+            <li>@text</li>
+        }
+    </ul>
+</div>
+
+@code {
+
+    ElementReference reference;
+    List<string> RandomText = new List<string>();
+    DotNetObjectReference<CallingJS> ObjectReference;
+    int generatorID;
+    Person person = new Person("Amr Zaki", 20, "Male", "amrzaki2000.az@gmail.com");
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        if (firstRender)
+        {
+            ObjectReference = DotNetObjectReference.Create(this);
+        }
+    }
+
+    private async Task AlertJS() =>
+        await JSRuntime.InvokeVoidAsync("alert", "Hello JS from Blazor");
+
+    private async Task LogPerson() =>
+        await JSRuntime.InvokeVoidAsync("console.log", person);
+
+    private async Task HelloPerson() =>
+        await JSRuntime.InvokeVoidAsync("alert", person.ToString());
+
+    private async Task ConfirmMessage()
+    {
+        bool result = await JSRuntime.InvokeAsync<bool>("confirm", "Confirm ?");
+        await JSRuntime.InvokeVoidAsync("alert", result ? "Confirmed" : "Not confirmed");
+    }
+
+    private async Task AskforName()
+    {
+        string name = await JSRuntime.InvokeAsync<string>("prompt", "What's your name ?");
+        await JSRuntime.InvokeVoidAsync("alert", $"Hello {name}");
+    }
+
+    private async Task ChangeTitle()
+    {
+        string title = await JSRuntime.InvokeAsync<string>("prompt", "Enter the new title");
+        await JSRuntime.InvokeVoidAsync("setDocumentTitle", title);
+    }
+
+    private async Task LoadText() =>
+        generatorID = await JSRuntime.InvokeAsync<int>("startRandomGenerator", ObjectReference);
+
+    [JSInvokable("AddText")]
+    public void AddTextToRandomText(string text)
+    {
+        RandomText.Add(text);
+        StateHasChanged();
+        System.Diagnostics.Debug.WriteLine("DotNet: Received " + text);
+    }
+
+    public void Dispose()
+    {
+        GC.SuppressFinalize(this);
+        if(generatorID != -1)
+        {
+            Task.Run(()=>JSRuntime.InvokeVoidAsync("stopRandomGenerator", generatorID));
+        }
+        if (ObjectReference is not null)
+        {
+            ObjectReference.Dispose();
+        }
+    }
+}

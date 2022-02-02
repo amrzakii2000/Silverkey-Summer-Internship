@@ -1,0 +1,27 @@
+﻿@page "/tabtest"
+
+<TabControl>
+    <GenericFragment Context="TheTab">
+        <span class="oi oi-tablet"></span> @TheTab.TabTitle
+    </GenericFragment>
+    <ChildContent>
+        @foreach (var i in Enumerable.Range(1, 3))
+        {
+            <TabPage TabTitle=@($"Tab {i}")>
+                <h2>This is Tab @i</h2>
+                <div class="card col-lg-4">
+                    <div class="card-group">
+                        <img class="card-img-top" src="img/@(i).jpg" />
+                        <div class="card-text">
+                            Hello From Tab @i . I'm a gold meme
+                        </div>
+                    </div>
+                </div>
+            </TabPage>
+        }
+    </ChildContent>
+</TabControl>
+
+@code {
+
+}

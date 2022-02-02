@@ -1,0 +1,18 @@
+﻿<p>Two-way Binded Counter = @Counter</p>
+<button class="btn btn-success" @onclick="IncrementCounter">Increment Two Way</button>
+
+
+@code {
+            [Parameter]
+            public int Counter { get; set; }
+
+            [Parameter]
+            public EventCallback<int> CounterChanged { get; set; }
+
+    public async Task IncrementCounter()
+    {
+        Counter++;
+        await CounterChanged.InvokeAsync(Counter);
+    }
+}
+

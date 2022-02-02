@@ -1,0 +1,15 @@
+﻿@using BlazorFirstapp.Server.Services
+
+@inject ICounterService CountService
+
+@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @CountService.CurrentCount</p>
+
+<button class="btn btn-primary" @onclick="CountService.IncrementCount">Click me</button>
+
+@code {
+    
+}

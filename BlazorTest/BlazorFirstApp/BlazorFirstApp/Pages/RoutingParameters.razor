@@ -1,0 +1,31 @@
+﻿@page "/customer"
+@page "/customer/{CustomerId}"
+
+<h1>
+    Customer:
+    @if (string.IsNullOrEmpty(CustomerId))
+    {
+        @:None
+    }
+    else
+    {
+        @CustomerId
+    }
+</h1>
+<h3>Select a customer</h3>
+<ul>
+    <li><a href="/customer/Microsoft">Microsoft</a></li>
+    <li><a href="/customer/Google">Google</a></li>
+    <li><a href="/customer/Amazon">Amazon</a></li>
+</ul>
+
+@code {
+    [Parameter]
+    public string? CustomerId { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        CustomerId = CustomerId ?? "Silverkey";
+    }
+}
